@@ -108,8 +108,6 @@ Suggestions and PRs are welcome!
 This package is inspired by Dr. Cédric Scherer's talk [ggplot2
 Wizardry](https://www.youtube.com/watch?v=5KHvEXYtnOo&ab_channel=UseROslo)
 
-The default theme is built on
-[`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes).
+The default theme is built on [`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes).
 
 The default color is from [`ggsci`](https://nanx.me/ggsci/)
-# ohmyggplot
