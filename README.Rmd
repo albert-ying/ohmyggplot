@@ -1,0 +1,95 @@
+
+`ohmyggplot`
+==============================================================================
+
+```{r setup, include=FALSE}
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+  library(ohmyggplot)
+})
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Your ggplot2 with better defaults.
+
+Without `ohmyggplot`
+------------------------------------------------------------------------------
+
+```{r}
+library(ggplot2)
+library(patchwork)
+
+p1 = ggplot(iris) +
+  geom_point(aes(Sepal.Length, Sepal.Width, color = Petal.Length), alpha = 0.8) +
+  theme(legend.position = "top") +
+  labs(title = "A dull plot, isn't it?")
+
+p2 = ggplot(iris) +
+  geom_point(aes(Sepal.Length, Sepal.Width, color = Species), alpha = 0.8)
+
+p1 + p2
+```
+
+
+With `ohmyggplot`
+------------------------------------------------------------------------------
+
+```{r}
+library(ohmyggplot)
+
+#initiate ohmyggplot
+oh_my_ggplot()
+
+p = ggplot(iris) +
+  geom_point(aes(Sepal.Length, Sepal.Width, fill = Petal.Length), alpha = 0.8) +
+  theme(legend.position = "top") +
+  labs(title = "A better plot, without extra code!") +
+  better_fill_legend
+p
+```
+
+Even better with `ggRetro`
+------------------------------------------------------------------------------
+
+```{r}
+library(ggRetro)
+
+ggRetro::base_mode(p) +
+  theme(legend.position = "top") +
+  labs(title = "Now with floating axes!")
+
+```
+
+The default descret color is also changed to Nature Publication Group style, from `ggsci::npg`
+------------------------------------------------------------------------------
+
+```{r}
+
+ggRetro::base_mode({
+  ggplot(iris) +
+  geom_point(aes(Sepal.Length, Sepal.Width, fill = Species), alpha = 0.8)
+}) +
+  theme(legend.position = "top")
+
+
+```
+
+Installation
+------------------------------------------------------------------------------
+```{}
+remotes::install_github("albert-ying/ohmyggplot")
+# Or
+devtools::install_github("albert-ying/ohmyggplot")
+```
+
+Acknowledgements
+------------------------------------------------------------------------------
+
+This package is inspired by Dr. Cédric Scherer's talk [{ggplot2} Wizardry](https://www.youtube.com/watch?v=5KHvEXYtnOo&ab_channel=UseROslo)
+
+The default theme is build on [`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes).
+
+The default color is from [`ggsci`](https://nanx.me/ggsci/)
