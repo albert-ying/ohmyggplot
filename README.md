@@ -29,7 +29,7 @@ p1 + p2
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
-With `ohmyggplot`
+With `ohmyggplot` (note: you only need to run `oh_my_ggplot()` once at begining, it will changed the default settings)
 -----
 
 ```
