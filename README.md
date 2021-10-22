@@ -7,6 +7,7 @@ Your ggplot2 with better defaults.
 - Changed the default `geom_point` to shape 21
 - Fine-tuned text size for publication-ready plot
 - Fixed `coord_cartesian` with `expand <- FALSE` and `clip <- "off"`
+- `better_fill_legend` and `better_color_legend`
 
 Without `ohmyggplot`
 --------
