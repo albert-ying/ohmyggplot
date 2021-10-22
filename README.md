@@ -54,13 +54,6 @@ Even better with [`ggRetro`](https://github.com/albert-ying/ggRetro)
 ```
 library(ggRetro)
 
-## 
-## Attaching package: 'ggRetro'
-
-## The following object is masked from 'package:ohmyggplot':
-## 
-##     oh_my_ggplot
-
 ggRetro::base_mode(p) +
   theme(legend.position = "top") +
   labs(title = "Now with floating axes!")
