@@ -1,8 +1,9 @@
 #-----------------------------------------------------------------------------
 #' better_ggplot_default()
 #' @importFrom ggthemes geom_rangeframe theme_tufte
-#' @importFrom ggplot2 geom_point ggplot_build scale_fill_viridis_c scale_color_viridis_c guides coord_cartesian update_geom_defaults
+#' @importFrom ggplot2 geom_point ggplot_build scale_fill_viridis_c scale_color_viridis_c guides coord_cartesian update_geom_defaults margin
 #' @importFrom hrbrthemes theme_ipsum
+#' @importFrom grid unit
 #' @importFrom ggtext element_markdown
 #' @importFrom ggsci scale_color_npg scale_fill_npg
 #' @export
@@ -70,6 +71,7 @@ oh_my_ggplot = function() {
 #' better_ggplot_default()
 #' @importFrom ggthemes geom_rangeframe theme_tufte
 #' @importFrom ggplot2 geom_point ggplot_build scale_fill_viridis_c scale_color_viridis_c guides guide_colorbar
+#' @importFrom grid unit
 #' @importFrom hrbrthemes theme_ipsum
 #' @importFrom ggtext element_markdown
 #' @importFrom ggsci scale_color_npg scale_fill_npg
@@ -105,7 +107,6 @@ if (FALSE) {
   p + better_fill_legend + theme(legend.position = "top")
   p |>
     base_mode()
-
   p |>
     base_facet("am", guides = "auto", nrow = 2)
   
