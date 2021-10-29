@@ -4,7 +4,7 @@
 Your ggplot2 with better defaults.
 
 - Changed default discrete and continuous color pallete
-- Changed the default `geom_point` to shape 21
+- Changed the default `geom_point` to shape 21 (**warning: now the `fill` controls the color of point and `color` controls the color of strock**)
 - Fine-tuned text size for publication-ready plot
 - Fixed `coord_cartesian` with `expand <- FALSE` and `clip <- "off"`
 - `better_fill_legend` and `better_color_legend`
@@ -29,7 +29,7 @@ p1 + p2
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
-With `ohmyggplot`
+With `ohmyggplot` (note: you only need to run `oh_my_ggplot()` once at begining, it will changed the default settings)
 -----
 
 ```
@@ -53,13 +53,6 @@ Even better with [`ggRetro`](https://github.com/albert-ying/ggRetro)
 
 ```
 library(ggRetro)
-
-## 
-## Attaching package: 'ggRetro'
-
-## The following object is masked from 'package:ohmyggplot':
-## 
-##     oh_my_ggplot
 
 ggRetro::base_mode(p) +
   theme(legend.position = "top") +
