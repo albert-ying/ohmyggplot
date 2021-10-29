@@ -13,17 +13,30 @@ oh_my_ggplot = function() {
   ## change global theme settings (for all following plots)
   ## fall back theme
   theme_set(
-   theme_ipsum(plot_title_size = 28, subtitle_size = 20, base_size = 18, axis_title_size = 20, strip_text_size = 22, base_family = "Helvetica", axis_title_just = "mc") +
+   theme_ipsum(
+     plot_title_size = 28,
+     subtitle_size = 20,
+     base_size = 18,
+     axis_title_size = 20,
+     strip_text_size = 22,
+     base_family = "Helvetica",
+     axis_title_just = "mc"
+   ) +
      theme(
-       plot.title.position = "plot", plot.caption.position = "plot", legend.position = "right", plot.margin = margin(25, 25, 10, 25),
+       plot.title.position = "plot",
+       plot.caption.position = "plot",
+       legend.position = "right",
+       plot.margin = margin(5, 15, 5, 15),
        axis.ticks = element_line(color = "grey92"), panel.grid.major = element_blank(),
        legend.text = element_text(color = "grey30"),
-       plot.subtitle = element_text(color = "grey30"),
-       plot.caption = element_text(margin = margin(t = 15)),
        axis.text.x = element_text(margin = margin(t = 5)),
        axis.text.y = element_text(margin = margin(r = 5)),
-     ) +
-   theme(plot.title = element_markdown(), plot.subtitle = element_markdown(), plot.caption = element_markdown(margin = margin(t = 15)), axis.title.x = element_markdown(), axis.title.y = element_markdown())
+       plot.title = element_markdown(),
+       plot.subtitle = element_markdown(),
+       plot.caption = element_markdown(margin = margin(t = 15)),
+       axis.title.x = element_markdown(),
+       axis.title.y = element_markdown()
+   )
   )
   assign(
     'scale_colour_discrete',
