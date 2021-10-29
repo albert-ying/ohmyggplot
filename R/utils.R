@@ -13,13 +13,15 @@ oh_my_ggplot = function() {
   ## change global theme settings (for all following plots)
   ## fall back theme
   theme_set(
-   theme_ipsum(plot_title_size = 28, subtitle_size = 22, base_size = 18, axis_title_size = 24, strip_text_size = 22, base_family = "Helvetica", axis_title_just = "mc") +
+   theme_ipsum(plot_title_size = 28, subtitle_size = 20, base_size = 18, axis_title_size = 20, strip_text_size = 22, base_family = "Helvetica", axis_title_just = "mc") +
      theme(
        plot.title.position = "plot", plot.caption.position = "plot", legend.position = "right", plot.margin = margin(25, 25, 10, 25),
        axis.ticks = element_line(color = "grey92"), panel.grid.major = element_blank(),
        legend.text = element_text(color = "grey30"),
        plot.subtitle = element_text(color = "grey30"),
-       plot.caption = element_text(margin = margin(t = 15))
+       plot.caption = element_text(margin = margin(t = 15)),
+       axis.text.x = element_text(margin = margin(t = 5)),
+       axis.text.y = element_text(margin = margin(r = 5)),
      ) +
    theme(plot.title = element_markdown(), plot.subtitle = element_markdown(), plot.caption = element_markdown(margin = margin(t = 15)), axis.title.x = element_markdown(), axis.title.y = element_markdown())
   )
@@ -60,9 +62,8 @@ oh_my_ggplot = function() {
     },
     pos = 1
   )
-  update_geom_defaults("point",list(size=3, stroke=.6, shape=21))
-  # formals(geom_point)$size <- 3
-  # formals(geom_point)$stroke <- .6
+  update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21))
+  update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
 }
