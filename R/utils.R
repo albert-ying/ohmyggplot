@@ -27,7 +27,8 @@ oh_my_ggplot = function() {
        plot.caption.position = "plot",
        legend.position = "right",
        plot.margin = margin(5, 15, 5, 15),
-       axis.ticks = element_line(color = "grey92"), panel.grid.major = element_blank(),
+       axis.ticks = element_line(color = "grey92"),
+       panel.grid.major = element_blank(),
        legend.text = element_text(color = "grey30"),
        axis.text.x = element_text(margin = margin(t = 5)),
        axis.text.y = element_text(margin = margin(r = 5)),
@@ -77,6 +78,7 @@ oh_my_ggplot = function() {
   )
   update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21))
   update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
+  update_geom_defaults("jitter",list(height = 0))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
 }
