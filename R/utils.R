@@ -29,9 +29,9 @@ oh_my_ggplot = function() {
        plot.margin = margin(5, 15, 5, 15),
        axis.ticks = element_line(color = "grey92"),
        panel.grid.major = element_blank(),
-       legend.text = element_text(color = "grey30"),
-       axis.text.x = element_text(margin = margin(t = 5)),
-       axis.text.y = element_text(margin = margin(r = 5)),
+       legend.markdown = element_markdown(color = "grey30"),
+       axis.markdown.x = element_markdown(margin = margin(t = 5)),
+       axis.markdown.y = element_markdown(margin = margin(r = 5)),
        plot.title = element_markdown(),
        plot.subtitle = element_markdown(),
        plot.caption = element_markdown(margin = margin(t = 15)),
@@ -110,16 +110,29 @@ better_fill_legend = guides(fill = guide_colorbar(title.position = "top", title.
 if (FALSE) {
   library(ggplot2)
   library(dplyr)
-  library(OhMyggplot)
+  library(ggRetro)
+  library(ohmyggplot)
   oh_my_ggplot()
-
+scale_x_discrete = function(...) {
+  scale_x_discrete(..., labels = scales::label_wrap(10))
+}
+scale_x_discrete = function(...) {
+  ggplot2::scale_x_discrete(...)
+}
+  
   annot_tb = data.frame(x = c(18,24), y = c(4.5,3.0), am = c(0,1), lab = c("Hi", "There"))
-  p = mtcars |>
-    # mutate(carb = as.factor(carb)) |>
+  {mtcars |>
+    mutate(x = "A  very very very very very") |>
     ggplot() +
-    geom_point(aes(mpg, wt, fill = carb)) +
+    geom_point(aes(vs, wt, fill = carb)) +
     labs(title="hello") +
-    geom_text(data = annot_tb, aes(x, y, label = lab))
+    theme(axis.text.y = ggtext::element_markdown()) +
+    scale_x_discrete(labels = scales::label_wrap(10)) } |> base_mode() +
+    scale_y_continuous(labels = ~ glue::glue("10^{.x}")) +
+    NULL
+
+    
+    # geom_text(data = annot_tb, aes(x, y, label = lab))
   p + better_fill_legend + theme(legend.position = "top")
   p |>
     base_mode()
