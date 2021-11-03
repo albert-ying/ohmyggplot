@@ -15,10 +15,10 @@ oh_my_ggplot = function() {
   theme_set(
    theme_ipsum(
      plot_title_size = 28,
-     subtitle_size = 20,
+     subtitle_size = 24,
      base_size = 18,
      axis_title_size = 20,
-     strip_text_size = 22,
+     strip_text_size = 24,
      base_family = "Helvetica",
      axis_title_just = "mc"
    ) +
