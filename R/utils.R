@@ -69,9 +69,8 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21))
+  update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21, height = 0))
   update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
-  update_geom_defaults("jitter",list(height = 0))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
 }
