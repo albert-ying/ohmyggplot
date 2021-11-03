@@ -29,9 +29,9 @@ oh_my_ggplot = function() {
        plot.margin = margin(5, 15, 5, 15),
        axis.ticks = element_line(color = "grey92"),
        panel.grid.major = element_blank(),
-       legend.markdown = element_markdown(color = "grey30"),
-       axis.markdown.x = element_markdown(margin = margin(t = 5)),
-       axis.markdown.y = element_markdown(margin = margin(r = 5)),
+       legend.text = element_markdown(color = "grey30"),
+       axis.text.x = element_markdown(margin = margin(t = 5)),
+       axis.text.y = element_markdown(margin = margin(r = 5)),
        plot.title = element_markdown(),
        plot.subtitle = element_markdown(),
        plot.caption = element_markdown(margin = margin(t = 15)),
@@ -69,13 +69,6 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  assign(
-    'coord_cartesian',
-    function(...) {
-      coord_cartesian(..., clip = "off", expend = FALSE)
-    },
-    pos = 1
-  )
   update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21))
   update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
   update_geom_defaults("jitter",list(height = 0))
