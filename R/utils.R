@@ -121,7 +121,7 @@ scale_x_discrete = function(...) {
     geom_point(aes(vs, wt, fill = carb)) +
     labs(title="hello")
     theme(axis.text.y = ggtext::element_markdown()) +
-    scale_x_discrete(labels = scales::label_wrap(10)) } |> base_mode() +
+    scale_x_discrete(labels = scales::label_wrap(10)) |> base_mode() +
     scale_y_continuous(labels = ~ glue::glue("10^{.x}")) +
     NULL
 
