@@ -13,31 +13,31 @@ oh_my_ggplot = function() {
   ## change global theme settings (for all following plots)
   ## fall back theme
   theme_set(
-   theme_ipsum(
-     plot_title_size = 28,
-     subtitle_size = 24,
-     base_size = 18,
-     axis_title_size = 20,
-     strip_text_size = 24,
-     base_family = "Helvetica",
-     axis_title_just = "mc"
-   ) +
-     theme(
-       plot.title.position = "plot",
-       plot.caption.position = "plot",
-       legend.position = "right",
-       plot.margin = margin(5, 15, 5, 15),
-       axis.ticks = element_line(color = "grey92"),
-       panel.grid.major = element_blank(),
-       legend.text = element_markdown(color = "grey30"),
-       axis.text.x = element_markdown(margin = margin(t = 5)),
-       axis.text.y = element_markdown(margin = margin(r = 5)),
-       plot.title = element_markdown(),
-       plot.subtitle = element_markdown(),
-       plot.caption = element_markdown(margin = margin(t = 15)),
-       axis.title.x = element_markdown(),
-       axis.title.y = element_markdown()
-   )
+    theme_ipsum(
+      plot_title_size = 28,
+      subtitle_size = 24,
+      base_size = 18,
+      axis_title_size = 20,
+      strip_text_size = 24,
+      base_family = "Helvetica",
+      axis_title_just = "mc"
+    ) +
+      theme(
+        plot.title.position = "plot",
+        plot.caption.position = "plot",
+        legend.position = "right",
+        plot.margin = margin(5, 15, 5, 15),
+        axis.ticks = element_line(color = "grey92"),
+        panel.grid.major = element_blank(),
+        # legend.text = element_markdown(color = "grey30"),
+        axis.text.x = element_markdown(margin = margin(t = 5)),
+        axis.text.y = element_markdown(margin = margin(r = 5)),
+        plot.title = element_markdown(),
+        plot.subtitle = element_markdown(),
+        plot.caption = element_markdown(margin = margin(t = 15)),
+        axis.title.x = element_markdown(),
+        axis.title.y = element_markdown()
+    )
   )
   assign(
     'scale_colour_discrete',
@@ -104,7 +104,9 @@ if (FALSE) {
   library(dplyr)
   library(ggRetro)
   library(ohmyggplot)
+  library(ggplot2pipes)
   oh_my_ggplot()
+  # init_ggplot2_pipes()
 scale_x_discrete = function(...) {
   scale_x_discrete(..., labels = scales::label_wrap(10))
 }
@@ -113,11 +115,11 @@ scale_x_discrete = function(...) {
 }
   
   annot_tb = data.frame(x = c(18,24), y = c(4.5,3.0), am = c(0,1), lab = c("Hi", "There"))
-  {mtcars |>
+  mtcars |>
     mutate(x = "A  very very very very very") |>
     ggplot() +
     geom_point(aes(vs, wt, fill = carb)) +
-    labs(title="hello") +
+    labs(title="hello")
     theme(axis.text.y = ggtext::element_markdown()) +
     scale_x_discrete(labels = scales::label_wrap(10)) } |> base_mode() +
     scale_y_continuous(labels = ~ glue::glue("10^{.x}")) +
