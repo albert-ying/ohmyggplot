@@ -69,7 +69,8 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  update_geom_defaults("point",list(fill = "coral", size=3, stroke=.6, shape=21, height = 0))
+  update_geom_defaults("point",list(fill = "gray28", size=3, stroke=.6, shape=21, height = 0))
+  update_geom_defaults("line",list(size=0.7))
   update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
@@ -105,21 +106,17 @@ if (FALSE) {
   library(ggRetro)
   library(ohmyggplot)
   library(ggplot2pipes)
+  library(paletteer)
   oh_my_ggplot()
+  scale_colour_discrete = function(...) 
   # init_ggplot2_pipes()
-scale_x_discrete = function(...) {
-  scale_x_discrete(..., labels = scales::label_wrap(10))
-}
-scale_x_discrete = function(...) {
-  ggplot2::scale_x_discrete(...)
-}
-  
   annot_tb = data.frame(x = c(18,24), y = c(4.5,3.0), am = c(0,1), lab = c("Hi", "There"))
   mtcars |>
     mutate(x = "A  very very very very very") |>
     ggplot() +
-    geom_point(aes(vs, wt, fill = carb)) +
-    labs(title="hello")
+    geom_point(aes(vs, wt, fill = as.factor(wt))) +
+    labs(title="ho") +
+    scale_fill_paletteer_d("cartography::pastel.pal")
     theme(axis.text.y = ggtext::element_markdown()) +
     scale_x_discrete(labels = scales::label_wrap(10)) |> base_mode() +
     scale_y_continuous(labels = ~ glue::glue("10^{.x}")) +
