@@ -69,9 +69,12 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  update_geom_defaults("point",list(fill = "gray28", size=3, stroke=.6, shape=21, height = 0))
+  update_geom_defaults("point",list(fill = "gray28", size=3, stroke=.7, shape=21, height = 0))
   update_geom_defaults("line",list(size=0.7))
-  update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05))
+  update_geom_defaults("bar",list(size=0.7, width = 0.8, position = "dodge", colour = "black"))
+  update_geom_defaults("boxplot",list(strok=0.7, width = 0.8, colour = "black"))
+  update_geom_defaults("violin",list(strok=0.7, width = 0.8, colour = "black"))
+  update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05, size = 0.7))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
 }
