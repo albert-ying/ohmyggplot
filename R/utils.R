@@ -69,11 +69,12 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  update_geom_defaults("point",list(fill = "gray28", size=3, stroke=.7, shape=21, height = 0))
+  update_geom_defaults("point",list(fill = "gray35", size=3, stroke=.7, shape=21, height = 0))
   update_geom_defaults("line",list(size=0.7))
-  update_geom_defaults("bar",list(size=0.7, width = 0.8, position = "dodge", colour = "black"))
-  update_geom_defaults("boxplot",list(strok=0.7, width = 0.8, colour = "black"))
-  update_geom_defaults("violin",list(strok=0.7, width = 0.8, colour = "black"))
+  # update_geom_defaults("bar",list(size=0.7, colour = "black"))
+  update_geom_defaults("col",list(size = 0.7, colour = "black"))
+  update_geom_defaults("boxplot",list(stroke=0.7, width = 0.8, colour = "black"))
+  update_geom_defaults("violin",list(stroke=0.7, width = 0.8, colour = "black"))
   update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05, size = 0.7))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
@@ -110,15 +111,19 @@ if (FALSE) {
   library(ohmyggplot)
   library(ggplot2pipes)
   library(paletteer)
-  oh_my_ggplot()
-  scale_colour_discrete = function(...) 
+  ohmyggplot::oh_my_ggplot()
+  g = ggplot2:::check_subclass("boxplot", "Geom", env = parent.frame()) 
+  g$default_aes
   # init_ggplot2_pipes()
   annot_tb = data.frame(x = c(18,24), y = c(4.5,3.0), am = c(0,1), lab = c("Hi", "There"))
   mtcars |>
     mutate(x = "A  very very very very very") |>
-    ggplot() +
+    # slice(1:5) |>
+    ggplot(aes(as.character(vs), disp)) +
+    geom_violin(weight = 0.01)
+    geom_col(color = "black", size = 0.7)
     geom_point(aes(vs, wt, fill = as.factor(wt))) +
-    labs(title="ho") +
+    labs(title="ho")
     scale_fill_paletteer_d("cartography::pastel.pal")
     theme(axis.text.y = ggtext::element_markdown()) +
     scale_x_discrete(labels = scales::label_wrap(10)) |> base_mode() +
