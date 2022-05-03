@@ -39,17 +39,41 @@ oh_my_ggplot = function() {
         axis.title.y = element_markdown()
     )
   )
+  chinese_pal = c(
+    # '#ed5a65',#艳红
+    '#619ac3',#羽扇豆蓝
+    '#d6a01d',#土黄
+    "#f04a3a",#珊瑚红
+    '#12aa9c',#美蝶绿
+    '#806332', #苍黄
+    '#eea6b7',#晶红
+    '#96c24e',#芽绿
+    '#2b333e',#青灰
+    '#a4aca7',#冰山蓝
+    '#f8f4ed', #汉白玉
+    '#82111f',#殷红
+    '#134857', #苍蓝
+    '#22a2c3',#海青
+    '#7e1671',#魏紫
+    '#1661ab',#靛青
+    '#f04b22',#大红
+    '#1ba784'#竹绿
+  )
+  # chinese_pal = c(
+
+  # )
   assign(
     'scale_colour_discrete',
     function(...) {
-      scale_color_npg(..., drop = F)
+      scale_color_manual(..., values = chinese_pal, drop = F)
     },
     pos = 1
   )
   assign(
     'scale_fill_discrete',
     function(...) {
-      scale_fill_npg(..., drop = F)
+      # scale_fill_npg(..., drop = F)
+      scale_fill_manual(..., values = chinese_pal, drop = F)
     },
     pos = 1
   )
@@ -111,26 +135,30 @@ if (FALSE) {
   library(ohmyggplot)
   library(ggplot2pipes)
   library(paletteer)
-  ohmyggplot::oh_my_ggplot()
-  g = ggplot2:::check_subclass("boxplot", "Geom", env = parent.frame()) 
-  g$default_aes
-  # init_ggplot2_pipes()
-  annot_tb = data.frame(x = c(18,24), y = c(4.5,3.0), am = c(0,1), lab = c("Hi", "There"))
-  mtcars |>
-    mutate(x = "A  very very very very very") |>
-    # slice(1:5) |>
-    ggplot(aes(as.character(vs), disp)) +
-    geom_violin(weight = 0.01)
-    geom_col(color = "black", size = 0.7)
-    geom_point(aes(vs, wt, fill = as.factor(wt))) +
-    labs(title="ho")
-    scale_fill_paletteer_d("cartography::pastel.pal")
-    theme(axis.text.y = ggtext::element_markdown()) +
-    scale_x_discrete(labels = scales::label_wrap(10)) |> base_mode() +
-    scale_y_continuous(labels = ~ glue::glue("10^{.x}")) +
-    NULL
+  library(hrbrthemes)
+  library(ggtext)
 
-    
+  ohmyggplot::oh_my_ggplot()
+
+  {
+  oh_my_ggplot()
+  tibble(X = c(1:16), y = rep(10,16)) |>
+    mutate(X = as.character(X)) |>
+    ggplot(aes(X, y)) +
+    geom_col(aes(fill = X))
+  }
+
+  iris |>
+    ggplot(aes(Petal.Length, Petal.Width, fill = Species)) +
+    geom_point() +
+    geom_smooth(aes(color = Species))
+
+  cars |>
+    tibble() |>
+    mutate(type = rep(1:10, 5)) |>
+    mutate(type = as.character(type)) |>
+    ggplot(aes(speed, dist, fill = type)) +
+    geom_point(alpha = 0.8)
     # geom_text(data = annot_tb, aes(x, y, label = lab))
   p + better_fill_legend + theme(legend.position = "top")
   p |>
