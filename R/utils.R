@@ -41,9 +41,9 @@ oh_my_ggplot = function() {
   )
   chinese_pal = c(
     # '#ed5a65',#艳红
+    "#f04a3a",#珊瑚红
     '#619ac3',#羽扇豆蓝
     '#d6a01d',#土黄
-    "#f04a3a",#珊瑚红
     '#12aa9c',#美蝶绿
     '#806332', #苍黄
     '#eea6b7',#晶红
