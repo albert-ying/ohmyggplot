@@ -9,7 +9,7 @@
 #' @export
 #-----------------------------------------------------------------------------
 
-oh_my_ggplot = function() {
+oh_my_ggplot <- function() {
   ## change global theme settings (for all following plots)
   ## fall back theme
   theme_set(
@@ -37,39 +37,38 @@ oh_my_ggplot = function() {
         plot.caption = element_markdown(margin = margin(t = 15)),
         axis.title.x = element_markdown(),
         axis.title.y = element_markdown()
-    )
+      )
   )
-  chinese_pal = c(
-    "#f04a3a",#珊瑚红
-    '#619ac3',#羽扇豆蓝
-    '#d6a01d',#土黄
-    '#12aa9c',#美蝶绿
-    '#806332', #苍黄
-    '#eea6b7',#晶红
-    '#96c24e',#芽绿
-    '#2b333e',#青灰
-    '#a4aca7',#冰山蓝
-    '#f8f4ed', #汉白玉
-    '#82111f',#殷红
-    '#134857', #苍蓝
-    '#22a2c3',#海青
-    '#7e1671',#魏紫
-    '#1661ab',#靛青
-    '#f04b22',#大红
-    '#1ba784'#竹绿
-  )
-  # chinese_pal = c(
 
-  # )
+  chinese_pal <- c(
+    "#f04a3a", # 
+    "#619ac3", # 
+    "#d6a01d", # 
+    "#12aa9c", # 
+    "#806332", # 
+    "#eea6b7", # 
+    "#96c24e", # 
+    "#2b333e", # 
+    "#a4aca7", # 
+    "#f8f4ed", # 
+    "#82111f", # 
+    "#134857", # 
+    "#22a2c3", # 
+    "#7e1671", # 
+    "#1661ab", # 
+    "#f04b22", # 
+    "#1ba784" #  
+  )
+
   assign(
-    'scale_colour_discrete',
+    "scale_colour_discrete",
     function(...) {
       scale_color_manual(..., values = chinese_pal, drop = F)
     },
     pos = 1
   )
   assign(
-    'scale_fill_discrete',
+    "scale_fill_discrete",
     function(...) {
       # scale_fill_npg(..., drop = F)
       scale_fill_manual(..., values = chinese_pal, drop = F)
@@ -77,14 +76,14 @@ oh_my_ggplot = function() {
     pos = 1
   )
   assign(
-    'scale_colour_inferno',
+    "scale_colour_inferno",
     function(...) {
       scale_color_viridis_c(..., option = "C")
     },
     pos = 1
   )
   assign(
-    'scale_fill_inferno',
+    "scale_fill_inferno",
     function(...) {
       scale_fill_viridis_c(..., option = "C")
     },
@@ -92,13 +91,13 @@ oh_my_ggplot = function() {
   )
   # formals(coord_cartesian)$expand <- FALSE
   # formals(coord_cartesian)$clip <- "off"
-  update_geom_defaults("point",list(fill = "gray35", size=3, stroke=.7, shape=21, height = 0))
-  update_geom_defaults("line",list(size=0.7))
+  update_geom_defaults("point", list(fill = "gray35", size = 3, stroke = .7, shape = 21, height = 0))
+  update_geom_defaults("line", list(size = 0.7))
   # update_geom_defaults("bar",list(size=0.7, colour = "black"))
-  update_geom_defaults("col",list(size = 0.7, colour = "black"))
-  update_geom_defaults("boxplot",list(stroke=0.7, width = 0.8, colour = "black"))
-  update_geom_defaults("violin",list(stroke=0.7, width = 0.8, colour = "black"))
-  update_geom_defaults("smooth",list(color = "firebrick", fill = "firebrick", alpha = 0.05, size = 0.7))
+  update_geom_defaults("col", list(size = 0.7, colour = "black"))
+  update_geom_defaults("boxplot", list(stroke = 0.7, width = 0.8, colour = "black"))
+  update_geom_defaults("violin", list(stroke = 0.7, width = 0.8, colour = "black"))
+  update_geom_defaults("smooth", list(color = "firebrick", fill = "firebrick", alpha = 0.05, size = 0.7))
   options(ggplot2.continuous.colour = scale_colour_inferno)
   options(ggplot2.continuous.fill = scale_fill_inferno)
 }
@@ -113,7 +112,7 @@ oh_my_ggplot = function() {
 #' @importFrom ggsci scale_color_npg scale_fill_npg
 #' @export
 #-----------------------------------------------------------------------------
-better_color_legend = guides(color = guide_colorbar(title.position = "top", title.hjust = .5, barwidth = unit(20, "lines"), barheight = unit(.5, "lines")))
+better_color_legend <- guides(color = guide_colorbar(title.position = "top", title.hjust = .5, barwidth = unit(20, "lines"), barheight = unit(.5, "lines")))
 #-----------------------------------------------------------------------------
 #' better_ggplot_default()
 #' @importFrom ggthemes geom_rangeframe theme_tufte
@@ -123,7 +122,7 @@ better_color_legend = guides(color = guide_colorbar(title.position = "top", titl
 #' @importFrom ggsci scale_color_npg scale_fill_npg
 #' @export
 #-----------------------------------------------------------------------------
-better_fill_legend = guides(fill = guide_colorbar(title.position = "top", title.hjust = .5, barwidth = unit(20, "lines"), barheight = unit(.5, "lines"))) 
+better_fill_legend <- guides(fill = guide_colorbar(title.position = "top", title.hjust = .5, barwidth = unit(20, "lines"), barheight = unit(.5, "lines")))
 #-----------------------------------------------------------------------------
 # debug
 #-----------------------------------------------------------------------------
@@ -140,11 +139,11 @@ if (FALSE) {
   ohmyggplot::oh_my_ggplot()
 
   {
-  oh_my_ggplot()
-  tibble(X = c(1:16), y = rep(10,16)) |>
-    mutate(X = as.character(X)) |>
-    ggplot(aes(X, y)) +
-    geom_col(aes(fill = X))
+    oh_my_ggplot()
+    tibble(X = c(1:16), y = rep(10, 16)) |>
+      mutate(X = as.character(X)) |>
+      ggplot(aes(X, y)) +
+      geom_col(aes(fill = X))
   }
 
   iris |>
@@ -158,12 +157,12 @@ if (FALSE) {
     mutate(type = as.character(type)) |>
     ggplot(aes(speed, dist, fill = type)) +
     geom_point(alpha = 0.8)
-    # geom_text(data = annot_tb, aes(x, y, label = lab))
+  # geom_text(data = annot_tb, aes(x, y, label = lab))
   p + better_fill_legend + theme(legend.position = "top")
   p |>
     base_mode()
   p |>
     base_facet("am", guides = "auto", nrow = 2)
-  
-  base_facet(p2,"am")
+
+  base_facet(p2, "am")
 }
