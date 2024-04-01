@@ -2,7 +2,9 @@
 
 export(better_color_legend)
 export(better_fill_legend)
+export(geom_caviar)
 export(oh_my_ggplot)
+importFrom(ggplot,geom_point)
 importFrom(ggplot2,coord_cartesian)
 importFrom(ggplot2,geom_point)
 importFrom(ggplot2,ggplot_build)

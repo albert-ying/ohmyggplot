@@ -41,23 +41,23 @@ oh_my_ggplot <- function() {
   )
 
   chinese_pal <- c(
-    "#f04a3a", # 
-    "#619ac3", # 
-    "#d6a01d", # 
-    "#12aa9c", # 
-    "#806332", # 
-    "#eea6b7", # 
-    "#96c24e", # 
-    "#2b333e", # 
-    "#a4aca7", # 
-    "#f8f4ed", # 
-    "#82111f", # 
-    "#134857", # 
-    "#22a2c3", # 
-    "#7e1671", # 
-    "#1661ab", # 
-    "#f04b22", # 
-    "#1ba784" #  
+    "#f04a3a", #
+    "#619ac3", #
+    "#d6a01d", #
+    "#12aa9c", #
+    "#806332", #
+    "#eea6b7", #
+    "#96c24e", #
+    "#2b333e", #
+    "#a4aca7", #
+    "#f8f4ed", #
+    "#82111f", #
+    "#134857", #
+    "#22a2c3", #
+    "#7e1671", #
+    "#1661ab", #
+    "#f04b22", #
+    "#1ba784" #
   )
 
   assign(
@@ -124,6 +124,22 @@ better_color_legend <- guides(color = guide_colorbar(title.position = "top", tit
 #-----------------------------------------------------------------------------
 better_fill_legend <- guides(fill = guide_colorbar(title.position = "top", title.hjust = .5, barwidth = unit(20, "lines"), barheight = unit(.5, "lines")))
 #-----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+#' geom_point
+#' @description bordered point
+#' @importFrom ggplot geom_point
+#' @export
+
+geom_caviar <- function(..., size = 3.0, stroke_size = 0.7) {
+  bgsize <- size + stroke_size * 2
+  list(
+    geom_point(size = bgsize, color = "black", pch = 19),
+    geom_point(color = "white", size = size, pch = 19),
+    geom_point(..., pch = 19, size = size)
+  )
+}
+
 # debug
 #-----------------------------------------------------------------------------
 if (FALSE) {
