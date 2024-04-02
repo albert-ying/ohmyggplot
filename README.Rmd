@@ -51,6 +51,18 @@ p = ggplot(iris) +
 p
 ```
 
+New geoms: `geom_caviar`
+------------------------------------------------------------------------------
+
+```{r}
+p = ggplot(iris) +
+  geom_caviar(aes(Sepal.Length, Sepal.Width, color = Petal.Length), alpha = 0.8) +
+  theme(legend.position = "top") +
+  labs(title = "Bordered scatter plot with geom_caviar") +
+  better_fill_legend
+p
+```
+
 Even better with `ggRetro`
 ------------------------------------------------------------------------------
 

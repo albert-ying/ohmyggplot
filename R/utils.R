@@ -128,7 +128,7 @@ better_fill_legend <- guides(fill = guide_colorbar(title.position = "top", title
 # -----------------------------------------------------------------------------
 #' geom_point
 #' @description bordered point
-#' @importFrom ggplot geom_point
+#' @importFrom ggplot2 geom_point
 #' @export
 
 geom_caviar <- function(..., size = 3.0, stroke_size = 0.7) {
