@@ -1,107 +1,87 @@
-`ohmyggplot`
-===
+# `ohmyggplot`
 
 Your ggplot2 with better defaults.
 
-- Changed default discrete and continuous color pallete
-- Changed the default `geom_point` to shape 21 (**warning: now the `fill` controls the color of point and `color` controls the color of strock**)
-- Fine-tuned text size for publication-ready plot
-- Fixed `coord_cartesian` with `expand <- FALSE` and `clip <- "off"`
-- `better_fill_legend` and `better_color_legend`
+## Without `ohmyggplot`
 
-Without `ohmyggplot`
---------
+    library(ggplot2)
+    library(patchwork)
 
-```
-library(ggplot2)
-library(patchwork)
+    p1 = ggplot(iris) +
+      geom_point(aes(Sepal.Length, Sepal.Width, color = Petal.Length), alpha = 0.8) +
+      theme(legend.position = "top") +
+      labs(title = "A dull plot, isn't it?")
 
-p1 = ggplot(iris) +
-  geom_point(aes(Sepal.Length, Sepal.Width, color = Petal.Length), alpha = 0.8) +
-  theme(legend.position = "top") +
-  labs(title = "A dull plot, isn't it?")
+    p2 = ggplot(iris) +
+      geom_point(aes(Sepal.Length, Sepal.Width, color = Species), alpha = 0.8)
 
-p2 = ggplot(iris) +
-  geom_point(aes(Sepal.Length, Sepal.Width, color = Species), alpha = 0.8)
-
-p1 + p2
-```
+    p1 + p2
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
-With `ohmyggplot` (note: you only need to run `oh_my_ggplot()` once at begining, it will changed the default settings)
------
+## With `ohmyggplot`
 
-```
-library(ohmyggplot)
+    library(ohmyggplot)
 
-#initiate ohmyggplot
-oh_my_ggplot()
+    #initiate ohmyggplot
+    oh_my_ggplot()
 
-p = ggplot(iris) +
-  geom_point(aes(Sepal.Length, Sepal.Width, fill = Petal.Length), alpha = 0.8) +
-  theme(legend.position = "top") +
-  labs(title = "A better plot, without extra code!") +
-  better_fill_legend
-p
-```
+    p = ggplot(iris) +
+      geom_point(aes(Sepal.Length, Sepal.Width, fill = Petal.Length), alpha = 0.8) +
+      theme(legend.position = "top") +
+      labs(title = "A better plot, without extra code!") +
+      better_fill_legend
+    p
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
-Even better with [`ggRetro`](https://github.com/albert-ying/ggRetro)
------------------
+## New geoms: `geom_caviar`
 
-```
-library(ggRetro)
-
-ggRetro::base_mode(p) +
-  theme(legend.position = "top") +
-  labs(title = "Now with floating axes!")
-
-## [1] "Both numeric"
-```
+    p = ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+      geom_caviar(aes(color = Petal.Length)) +
+      theme(legend.position = "top") +
+      labs(subtitle = "Bordered scatter plot with geom_caviar") +
+      better_fill_legend
+    p
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
-The default descret color is also changed to Nature Publication Group style, from `ggsci::npg`
-----------------------------------------------------------------------------------
+## Even better with `ggRetro`
 
-```
-ggRetro::base_mode({
-  ggplot(iris) +
-  geom_point(aes(Sepal.Length, Sepal.Width, fill = Species), alpha = 0.8)
-}) +
-  theme(legend.position = "top")
+    library(ggRetro)
 
-## [1] "Both numeric"
-```
+    ggRetro::base_mode(p) +
+      theme(legend.position = "top") +
+      labs(title = "Now with floating axes!")
+
+    ## [1] "Both numeric"
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
-Installation
-------------
+## The default descret color is also changed to Nature Publication Group style, from `ggsci::npg`
 
-```
-remotes::install_github("albert-ying/ohmyggplot")
-# Or
-devtools::install_github("albert-ying/ohmyggplot")
-```
+    ggRetro::base_mode({
+      ggplot(iris) +
+      geom_point(aes(Sepal.Length, Sepal.Width, fill = Species), alpha = 0.8)
+    }) +
+      theme(legend.position = "top")
 
-Why not make it a theme?
-------------------------
+    ## [1] "Both numeric"
 
-Some modifications cannot be simply wrapped into a theme function (e.g. `coord_cartesian`)
+![](README_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
-Inspirations
-------------
+## Installation
 
-I'm lazy. I want a good default setting for casual plotting with a minimum amount of code. This is all it is about. Now I just need to put `ohmyggplot::oh_my_ggplot()` in my `.Rprofile`
+    remotes::install_github("albert-ying/ohmyggplot")
+    # Or
+    devtools::install_github("albert-ying/ohmyggplot")
 
-Suggestions and PRs are welcome!
+## Acknowledgements
 
-This package is inspired by Dr. Cédric Scherer's talk [ggplot2
+This package is inspired by Dr. Cédric Scherer’s talk [{ggplot2}
 Wizardry](https://www.youtube.com/watch?v=5KHvEXYtnOo&ab_channel=UseROslo)
 
-The default theme is built on [`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes).
+The default theme is build on
+[`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes).
 
 The default color is from [`ggsci`](https://nanx.me/ggsci/)

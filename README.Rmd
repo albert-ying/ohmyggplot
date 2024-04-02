@@ -1,3 +1,7 @@
+---
+# to markdown
+output: md_document
+---
 
 `ohmyggplot`
 ==============================================================================
@@ -55,10 +59,10 @@ New geoms: `geom_caviar`
 ------------------------------------------------------------------------------
 
 ```{r}
-p = ggplot(iris) +
-  geom_caviar(aes(Sepal.Length, Sepal.Width, color = Petal.Length), alpha = 0.8) +
+p = ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_caviar(aes(color = Petal.Length)) +
   theme(legend.position = "top") +
-  labs(title = "Bordered scatter plot with geom_caviar") +
+  labs(subtitle = "Bordered scatter plot with geom_caviar") +
   better_fill_legend
 p
 ```
